@@ -12,5 +12,5 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 
 
-add_library(portable_service_core ${PROJECT_SOURCE_DIR}/portable_service_core.cpp)
+add_library(portable_service_core ${PROJECT_SOURCE_DIR}/portable_service_core.hpp ${PROJECT_SOURCE_DIR}/portable_service_core.cpp)
 set_property(TARGET portable_service_core PROPERTY CXX_STANDARD 14)
