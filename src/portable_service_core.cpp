@@ -4,3 +4,7 @@
 
 #include "portable_service_core.hpp"
 
+namespace portable_service{
+    
+    
+}
