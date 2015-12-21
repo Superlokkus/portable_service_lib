@@ -25,5 +25,9 @@ Minimum supported APIs / OS
 -   launchd / Apple OS X (Unix)
 -   init aka. SysV-style init / Unix
 
+License
+--------
+This project is distributed under the terms of the BSD 3 license. For further details see [LICENSE](LICENSE)
+
 
  

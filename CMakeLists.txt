@@ -5,12 +5,34 @@ set (PORTABLE_SERVICE_LIB_VERSION_MAJOR 0)
 set (PORTABLE_SERVICE_LIB_VERSION_MINOR 1)
 set (PROJECT_SOURCE_DIR src)
 
+if (WIN32)
+set (USE_WINDOWS_SCM TRUE CACHE BOOL "Use the windows service manager")
+endif()
+
 configure_file (
   "${PROJECT_SOURCE_DIR}/portable_service_lib.h.in"
   "${PROJECT_BINARY_DIR}/portable_service_lib.h"
   )
+
 include_directories("${PROJECT_BINARY_DIR}")
 
+set (CORE_SOURCE_FILES
+${PROJECT_SOURCE_DIR}/portable_service_core.hpp
+${PROJECT_SOURCE_DIR}/portable_service_core.cpp
+)
 
-add_library(portable_service_core ${PROJECT_SOURCE_DIR}/portable_service_core.hpp ${PROJECT_SOURCE_DIR}/portable_service_core.cpp)
-set_property(TARGET portable_service_core PROPERTY CXX_STANDARD 14)
+set (WINDOWS_SCM_FILES
+${PROJECT_SOURCE_DIR}/win_scm/win_scm.hpp
+)
+
+if (USE_WINDOWS_SCM)
+set (PORTABLE_SERVICE_LIBRARY_FILES
+${CORE_SOURCE_FILES},
+${WINDOWS_SCM_FILES}
+)
+endif()
+
+add_library(portable_service_lib ${PORTABLE_SERVICE_LIBRARY_FILES})
+
+set_property(TARGET portable_service_lib PROPERTY LINKER_LANGUAGE CXX)
+set_property(TARGET portable_service_lib PROPERTY CXX_STANDARD 11)
