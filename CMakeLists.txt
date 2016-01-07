@@ -19,6 +19,7 @@ include_directories("${PROJECT_BINARY_DIR}")
 set (CORE_SOURCE_FILES
 ${PROJECT_SOURCE_DIR}/portable_service_core.hpp
 ${PROJECT_SOURCE_DIR}/portable_service_core.cpp
+${PROJECT_SOURCE_DIR}/api_adapter.hpp
 )
 
 set (WINDOWS_SCM_FILES
@@ -27,10 +28,17 @@ ${PROJECT_SOURCE_DIR}/win_scm/win_scm.hpp
 
 if (USE_WINDOWS_SCM)
 set (PORTABLE_SERVICE_LIBRARY_FILES
-${CORE_SOURCE_FILES},
+${CORE_SOURCE_FILES}
 ${WINDOWS_SCM_FILES}
 )
+else()
+set (PORTABLE_SERVICE_LIBRARY_FILES
+${CORE_SOURCE_FILES}
+)
 endif()
+
+message(STATUS "Using following source files for portable_service_lib: " 
+    ${PORTABLE_SERVICE_LIBRARY_FILES})
 
 add_library(portable_service_lib ${PORTABLE_SERVICE_LIBRARY_FILES})
 

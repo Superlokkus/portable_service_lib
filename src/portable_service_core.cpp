@@ -3,9 +3,10 @@
 */
 
 #include "portable_service_core.hpp"
+#include "api_adapter.hpp"
 
 namespace portable_service{
-    service_manager service_manager::service_manager(const service_api &api) {
+    service_manager::service_manager(const service_api &api) {
         switch (api){
             case service_api::debug:
             
