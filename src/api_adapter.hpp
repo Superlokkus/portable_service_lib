@@ -12,17 +12,18 @@
 #include "portable_service_core.hpp"
 
 namespace portable_service {
-    namespace internal {
-        class api_adapter {
-        public:
-            virtual void add_service_functionality(std::function<void(void) > loop,
-                    std::map<event, std::function<bool(void) >> call_backs,
-                    std::string name);
+namespace internal {
 
-                    
-            virtual ~api_adapter() = default;
-        };
-    }
+class api_adapter {
+public:
+    virtual void add_service_functionality(std::function<void(void) > loop,
+            std::map<event, std::function<bool(void) >> call_backs,
+            std::string name);
+
+
+    virtual ~api_adapter() = default;
+};
+}
 }
 
 
