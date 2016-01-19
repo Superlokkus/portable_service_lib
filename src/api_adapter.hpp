@@ -9,15 +9,15 @@
 #include <map>
 #include <string>
 
-#include "portable_service_core.hpp"
+#include "common.hpp"
 
 namespace portable_service {
 namespace internal {
 
 class api_adapter {
 public:
-    virtual void add_service_functionality(std::function<void(void) > loop,
-            std::map<event, std::function<bool(void) >> call_backs,
+    virtual void add_service_functionality(service_functionality_t
+            <service_func_plain_loop_t> service_func,
             std::string name);
 
 

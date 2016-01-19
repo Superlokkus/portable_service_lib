@@ -16,7 +16,7 @@
 namespace portable_service {
 
 enum struct service_api : unsigned long long {
-    debug = 0x0u, /*!< Use this to use run the service locally, i.e. 
+            local = 0x0u, /*!< Use this to use run the service locally, i.e. 
                        as an ordinary program, for e.g. debugging purposes */
             unix_daemon, /*!< Use the most common unix way, aka SysV initd, aka
                       double fork() etc.*/
@@ -41,8 +41,6 @@ enum struct event {
                          ask for the proper function of the service, 
                          to achieve a watchdoged functionality */
 };
-
-std::set<service_api> get_avaible_apis();
 
 using service_func_plain_loop_t = std::function<void(void) >;
 using service_func_with_arg_loop_t = std::function<void(std::string)>;

@@ -1,14 +1,27 @@
-/* 
- * File:   local_adapter.hpp
- * Author: klm
- *
- * Created on 22. Dezember 2015, 17:20
- */
+/*! @file local_adapter.hpp
 
-#ifndef LOCAL_ADAPTER_HPP
-#define	LOCAL_ADAPTER_HPP
+*/
 
+#ifndef PORTABLE_SERVICE_LOCAL_ADAPTER_HPP
+#define	PORTABLE_SERVICE_LOCAL_ADAPTER_HPP
 
+namespace portable_service{
+namespace internal{
 
-#endif	/* LOCAL_ADAPTER_HPP */
+class local_adapter : public api_adapter{
+public:
+    virtual void add_service_functionality(service_functionality_t
+            <service_func_plain_loop_t> service_func,
+            std::string name);
+    
+    
+private:
+    
+    
+};
+
+}
+}
+
+#endif	
 
