@@ -3,7 +3,11 @@ project (portable_service_lib)
 # The version number.
 set (PORTABLE_SERVICE_LIB_VERSION_MAJOR 0)
 set (PORTABLE_SERVICE_LIB_VERSION_MINOR 1)
-set (PROJECT_SOURCE_DIR src)
+set (PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/src)
+set (BUILD_SHARED_LIBS)
+
+find_package(Boost 1.60 REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
 
 if (WIN32)
 set (USE_WINDOWS_SCM TRUE CACHE BOOL "Use the windows service manager")
@@ -44,3 +48,7 @@ add_library(portable_service_lib ${PORTABLE_SERVICE_LIBRARY_FILES})
 
 set_property(TARGET portable_service_lib PROPERTY LINKER_LANGUAGE CXX)
 set_property(TARGET portable_service_lib PROPERTY CXX_STANDARD 11)
+
+
+enable_testing()
+add_subdirectory(test)
